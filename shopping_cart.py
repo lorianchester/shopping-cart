@@ -40,3 +40,28 @@ def to_usd(my_price):
 # TODO: write some Python code here to produce the desired output
 
 print(products)
+
+
+# ASK FOR USER INPUT
+
+product_id = input("Please input a product identifier: ")
+
+print(product_id) 
+
+
+# LOOK UP CORRESPONDING PRODUCTS
+
+# print the product that has an id attribute equal to "9"
+matching_products = []
+
+for x in products:
+    if str(x["id"]) == str(product_id):
+        #this is a match
+        matching_products.append(x)
+
+print(matching_products)
+
+# print the name of the matching product
+
+match_product = matching_product[0]
+print(matching_product["name"], matching_prpduct["price"])
