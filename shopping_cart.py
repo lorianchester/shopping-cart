@@ -71,13 +71,14 @@ if __name__ == "__main__":
     prices = []
     array_index = 0
 
-    for c in range(len(clerk_inputs)):
+    for array_index < len(clerk_inputs):
         for x in products:
             if str(x["id"]) == clerk_inputs[array_index]:
                 #this is a match
                 matching_products.append(x["name"])
                 prices.append(x["price"])
                 array_index = array_index + 1
+                print(array_index)
 
     for x in matching_products:
         print(x)
