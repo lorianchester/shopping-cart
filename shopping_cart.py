@@ -39,6 +39,13 @@ def to_usd(my_price):
 if __name__ == "__main__":
     # TODO: write some Python code here to produce the desired output
 
+    import os
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
+    os.getenv("TAX_RATE",default=.0875)
+
     # ASK FOR USER INPUT
 
     print("This program allows the user to input product indentifiers, searches for the corresponding products and prices, and prints a receipt.")
@@ -99,8 +106,6 @@ if __name__ == "__main__":
     index = 0
 
     while index < len(matching_products):
-        #match_product = matching_products[0]
-        #print(matching_products["name"], matching_products["price"])
         print("...", matching_products[index], "(" + to_usd(prices[index]) + ")")
         index = index + 1
 
@@ -135,9 +140,56 @@ if __name__ == "__main__":
     print("THANKS, SEE YOU AGAIN SOON!")
     print("-----------------------------")
 
+    email_receipt = input("Would you like this receipt emailed to you? Please enter 'yes' or 'no: ")
 
+    if email_receipt.lower() == "yes":
+        import os
+        from dotenv import load_dotenv
+        from sendgrid import SendGridAPIClient
+        from sendgrid.helpers.mail import Mail
 
-    # print the name of the matching product
+        load_dotenv()
 
-    #match_product = matching_products[0]
-    #print(matching_products["name"], matching_products["price"])
+        SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
+        SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
+
+        client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
+        print("CLIENT:", type(client))
+
+        subject = "Your Receipt from the Green Grocery Store"
+        
+        html_list_items = "<li>You ordered: matching_products[0]</li>"
+        
+        index = 1
+        while index < (len(matching_products) - 1):
+            html_list_items += "<li>You ordered: matching_products[index]</li>"
+            index = index + 1
+
+        html_content = f"""
+        <h3>Hello this is your receipt</h3>
+        <p>Date: datetime.datetime.now()</p>
+        <ol>
+        {html_list_items}
+        </ol>
+        """
+        print(html_content)
+
+        # FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
+        # ... but we can customize the `to_emails` param to send to other addresses
+        message = Mail(from_email=SENDER_ADDRESS, to_emails=SENDER_ADDRESS, subject=subject, html_content=html_content)
+
+        try:
+            response = client.send(message)
+
+            print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
+            print(response.status_code) #> 202 indicates SUCCESS
+            print(response.body)
+            print(response.headers)
+
+        except Exception as err:
+            print(type(err))
+            print(err)
+    
+    else:
+        print("Thank you! Have a great day.")
+    
