@@ -90,14 +90,14 @@ if __name__ == "__main__":
     # print receipt
 
     # date and time
-    # https://www.w3schools.com/python/python_datetime.asp
-    import datetime
+    # https://www.tutorialspoint.com/python/python_date_time.htm
+    from time import ctime
 
     print("-----------------------------")
     print("One-Stop Shop Grocery")
     print("www.one-stop-shop.com")
     print("-----------------------------")
-    print("CHECKOUT AT:", datetime.datetime.now())
+    print("CHECKOUT AT:", ctime())
     print("-----------------------------")
 
     #print selected products and corresponding price
@@ -155,7 +155,7 @@ if __name__ == "__main__":
         print("CLIENT:", type(client))
 
         subject = "Your Receipt from the Green Grocery Store"
-        html_content = "Your total is " + to_usd(total) + "." "The date is " + str(datetime.datetime.now()) + "."
+        html_content = "Your total is " + to_usd(total) + "." "The date is " + ctime() + "."
         print(html_content)
 
         # FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
