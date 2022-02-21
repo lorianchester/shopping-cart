@@ -54,26 +54,33 @@ if __name__ == "__main__":
 
         #validate user input
         #product IDs are valid between 1 and 20
-        #if valid, add to list
+        #if valid, add to list of inputs
         if int(product_id) > 0 and int(product_id) < 20:
     
-            matching_products = []
-            prices = []
-            array_index = 0
+            clerk_inputs[product] = product_id
 
-            for x in products:
-                if str(x["id"]) == str(clerk_inputs[array_index]):
-                #this is a match
-                    matching_products.append(x["name"])
-                    prices.append(x["price"])
-                    array_index = array_index + 1
-        
+            product = product + 1
         #not valid input
         else:
 
             print("Are you sure that product identifier is correct? Please try again!")
 
         product_id = input("Please input a product identifier: ")
+
+
+
+    # LOOK UP CORRESPONDING PRODUCTS AND PRICES
+
+    matching_products = []
+    prices = []
+    array_index = 0
+
+    for x in products:
+        if str(x["id"]) == str(clerk_inputs[array_index]):
+            #this is a match
+            matching_products.append(x["name"])
+            prices.append(x["price"])
+            array_index = array_index + 1
 
 
     # print receipt
