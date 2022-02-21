@@ -73,11 +73,10 @@ if __name__ == "__main__":
 
     for c in range(0, len(clerk_inputs)):
         for x in products:
-            if str(x["id"]) == clerk_inputs[array_index]:
+            if str(x["id"]) == c:
                 #this is a match
                 matching_products.append(x["name"])
                 prices.append(x["price"])
-                array_index = array_index + 1
 
 
     # print receipt
