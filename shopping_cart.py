@@ -57,7 +57,6 @@ if __name__ == "__main__":
     
             clerk_inputs.append(product_id)
 
-            product = product + 1
         #not valid input
         else:
 
