@@ -79,6 +79,8 @@ if __name__ == "__main__":
             prices.append(x["price"])
             array_index = array_index + 1
 
+    print(matching_products)
+
 
     # print receipt
 
@@ -123,13 +125,13 @@ if __name__ == "__main__":
 
     tax = subtotal * tax_rate
 
-    print("TAX:", tax)
+    print("TAX:", to_usd(tax))
 
     #print total
 
     total = subtotal + tax
 
-    print("TOTAL:", total)
+    print("TOTAL:", to_usd(total))
 
     print("-----------------------------")
     print("THANKS, SEE YOU AGAIN SOON!")
