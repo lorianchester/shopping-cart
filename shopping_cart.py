@@ -48,8 +48,6 @@ if __name__ == "__main__":
 
     clerk_inputs = []
 
-    product = 0
-
     while product_id.upper() != "DONE":
 
         #validate user input
@@ -57,7 +55,7 @@ if __name__ == "__main__":
         #if valid, add to list of inputs
         if int(product_id) > 0 and int(product_id) < 20:
     
-            clerk_inputs[product] = product_id
+            clerk_inputs.append = product_id
 
             product = product + 1
         #not valid input
