@@ -53,7 +53,7 @@ if __name__ == "__main__":
         #validate user input
         #product IDs are valid between 1 and 20
         #if valid, add to list of inputs
-        if product_id > str(0) and product_id < str(20):
+        if int(product_id) > 0 and int(product_id) < 20:
     
             clerk_inputs.append(product_id)
 
