@@ -72,7 +72,7 @@ if __name__ == "__main__":
     array_index = 0
 
     for x in products:
-        if str(x["id"]) == str(clerk_inputs[array_index]):
+        if str(x["id"]) == clerk_inputs[array_index]:
             #this is a match
             matching_products.append(x["name"])
             prices.append(x["price"])
