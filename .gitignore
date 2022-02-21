@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ignore the contents of the ".env" file (prevent them from being exposed on GitHub):
+.env
