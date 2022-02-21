@@ -157,7 +157,7 @@ if __name__ == "__main__":
         print("CLIENT:", type(client))
 
         subject = "Your Receipt from the Green Grocery Store"
-        html_content = "Your total is " + to_usd(total) + "." "The date is " + datetime.datetime.now() + "."
+        html_content = "Your total is " + to_usd(total) + "." "The date is " + str(datetime.datetime.now()) + "."
         print(html_content)
 
         # FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
