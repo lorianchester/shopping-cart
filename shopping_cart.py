@@ -157,6 +157,11 @@ if __name__ == "__main__":
         subject = "Your Receipt from the Green Grocery Store"
         html_content = "Your total is " + to_usd(total) + "." "The date is " + str(datetime.datetime.now()) + "."
         print(html_content)
+        index = 0
+        while index < len(matching_products):
+            html_content = "...", matching_products[index], "(" + to_usd(prices[index]) + ")"
+            print(html_content)
+            index = index + 1
 
         # FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
         # ... but we can customize the `to_emails` param to send to other addresses
