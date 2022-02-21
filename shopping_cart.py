@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
     load_dotenv()
 
-    os.getenv("TAX_RATE",default=.0875)
+    tax_rate = float(os.getenv("TAX_RATE",default=.0875))
 
     # ASK FOR USER INPUT
 
@@ -123,8 +123,6 @@ if __name__ == "__main__":
     print("SUBTOTAL:", to_usd(subtotal))
 
     #print tax
-
-    tax_rate = .0875
 
     tax = subtotal * tax_rate
 
