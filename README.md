@@ -1,8 +1,7 @@
 # shopping-cart
 
 ## Installation
-Clone the repo
-Navigate to the repo from the command line
+Clone the repo and navigate to it from the command line.
 ```sh
 cd ~/Desktop/shopping-cart 
 ```
