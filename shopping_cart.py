@@ -71,7 +71,7 @@ if __name__ == "__main__":
     prices = []
     array_index = 0
 
-    for c in range(0, len(clerk_inputs)):
+    for array_index < len(clerk_inputs):
         for x in products:
             if str(x["id"]) == c[array_index]:
                 #this is a match
