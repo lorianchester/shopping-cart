@@ -157,21 +157,7 @@ if __name__ == "__main__":
         print("CLIENT:", type(client))
 
         subject = "Your Receipt from the Green Grocery Store"
-        
-        html_list_items = "<li>You ordered: matching_products[0]</li>"
-        
-        index = 1
-        while index < (len(matching_products) - 1):
-            html_list_items += "<li>You ordered: matching_products[index]</li>"
-            index = index + 1
-
-        html_content = f"""
-        <h3>Hello this is your receipt</h3>
-        <p>Date: datetime.datetime.now()</p>
-        <ol>
-        {html_list_items}
-        </ol>
-        """
+        html_content = "Your total is " + to_usd(total) + "." "The date is " + datetime.datetime.now() + "."
         print(html_content)
 
         # FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
