@@ -64,9 +64,10 @@ if __name__ == "__main__":
             for x in products:
                 if str(x["id"]) == str(clerk_inputs[array_index]):
                 #this is a match
-                matching_products.append(x["name"])
-                prices.append(x["price"])
-                array_index = array_index + 1
+                    matching_products.append(x["name"])
+                    prices.append(x["price"])
+                    array_index = array_index + 1
+        
         #not valid input
         else:
 
