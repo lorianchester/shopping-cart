@@ -79,6 +79,7 @@ if __name__ == "__main__":
                 prices.append(x["price"])
                 array_index = array_index + 1
                 print(array_index)
+                print(matching_products)
 
     for x in matching_products:
         print(x)
