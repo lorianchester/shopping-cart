@@ -64,8 +64,6 @@ if __name__ == "__main__":
 
         product_id = input("Please input a product identifier: ")
 
-    for x in clerk_inputs:
-        print(x)
 
     # LOOK UP CORRESPONDING PRODUCTS AND PRICES
 
@@ -80,7 +78,8 @@ if __name__ == "__main__":
             prices.append(x["price"])
             array_index = array_index + 1
 
-    print(matching_products)
+    for x in matching_products:
+        print(x)
 
 
     # print receipt
