@@ -36,32 +36,111 @@ def to_usd(my_price):
     """
     return f"${my_price:,.2f}" #> $12,000.71
 
+if __name__ == "__main__":
+    # TODO: write some Python code here to produce the desired output
 
-# TODO: write some Python code here to produce the desired output
+    # ASK FOR USER INPUT
 
-print(products)
+    print("This program allows the user to input product indentifiers, searches for the corresponding products and prices, and prints a receipt.")
+    print("You will begin by entering product identifiers. When you are done, enter 'DONE' when prompted for an input.")
+
+    product_id = input("Please input a product identifier: ")
+
+    clerk_inputs = []
+
+    product = 0
+
+    while product_id.upper() != "DONE":
+
+        #validate user input
+        #product IDs are valid between 1 and 20
+        #if valid, add to list of inputs
+        if product_id > 0 and product_id < 20:
+    
+            clerk_inputs[product] = product_id
+
+            product = product + 1
+        #not valid input
+        else:
+
+            print("Are you sure that product identifier is correct? Please try again!")
+
+        product_id = input("Please input a product identifier: ")
 
 
-# ASK FOR USER INPUT
 
-product_id = input("Please input a product identifier: ")
+    # LOOK UP CORRESPONDING PRODUCTS AND PRICES
 
-print(product_id) 
+    matching_products = []
+    prices = []
+    array_index = 0
+
+    for x in products:
+        if str(x["id"]) == str(clerk_inputs[array_index]):
+            #this is a match
+            matching_products.append(x["name"])
+            prices.append(x["price"])
+            array_index = array_index + 1
 
 
-# LOOK UP CORRESPONDING PRODUCTS
+    # print receipt
 
-# print the product that has an id attribute equal to "9"
-matching_products = []
+    # date and time
+    # https://www.w3schools.com/python/python_datetime.asp
+    import datetime
 
-for x in products:
-    if str(x["id"]) == str(product_id):
-        #this is a match
-        matching_products.append(x)
+    print("-----------------------------")
+    print("One-Stop Shop Grocery")
+    print("www.one-stop-shop.com")
+    print("-----------------------------")
+    print("CHECKOUT AT:", datetime.datetime.now())
+    print("-----------------------------")
 
-print(matching_products)
+    #print selected products and corresponding price
+    print("SELECTED PRODUCTS:")
 
-# print the name of the matching product
+    index = 0
 
-match_product = matching_product[0]
-print(matching_product["name"], matching_prpduct["price"])
+    while index < len(matching_products):
+        #match_product = matching_products[0]
+        #print(matching_products["name"], matching_products["price"])
+        print("...", matching_products[index], "(" + to_usd(prices[index]) + ")")
+        index = index + 1
+
+    print("-----------------------------")
+
+    #print subtotal
+    index = 0
+
+    subtotal = 0
+
+    while index < len(prices):
+        subtotal = prices[index] + subtotal
+        index = index + 1
+
+    print("SUBTOTAL:", to_usd(subtotal))
+
+    #print tax
+
+    tax_rate = .0875
+
+    tax = subtotal * tax_rate
+
+    print("TAX:", tax)
+
+    #print total
+
+    total = subtotal + tax
+
+    print("TOTAL:", total)
+
+    print("-----------------------------")
+    print("THANKS, SEE YOU AGAIN SOON!")
+    print("-----------------------------")
+
+
+
+    # print the name of the matching product
+
+    #match_product = matching_products[0]
+    #print(matching_products["name"], matching_products["price"])
