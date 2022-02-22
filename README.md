@@ -6,7 +6,7 @@ Clone the repo and navigate to it from the command line.
 cd ~/Desktop/shopping-cart 
 ```
 
-## Create .env files
+## Create a .env file
 Set up your own env file. Create a file called .env and store the tax rate in a variable.
 
 ```sh
